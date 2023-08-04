@@ -95,20 +95,40 @@ let increaseCreditIfVip customer =
 
 let upgradeCustomer = getPurchases >> tryPromoteToVip >> increaseCreditIfVip
 
-let  customerVIP = { Id = 1; IsVip = true; Credit= 0.0M }
-let customerSTD = { Id = 2; IsVip = false; Credit = 100.0M }
+let customerVIP = { Id = 1; IsVip = true; Credit = 0.0M }
 
-let areEqual expected actual =
-    actual = expected
-    
+let customerSTD =
+    { Id = 2
+      IsVip = false
+      Credit = 100.0M }
+
+let areEqual expected actual = actual = expected
+
 let assertVIP =
-    let expected = { Id = 1; IsVip = true; Credit = 100.0M }
+    let expected =
+        { Id = 1
+          IsVip = true
+          Credit = 100.0M }
+
     areEqual expected (upgradeCustomer customerVIP)
-    
+
 let assertSTDtoVIP =
-    let expected = { Id = 2; IsVip = true; Credit = 200.0M }
+    let expected =
+        { Id = 2
+          IsVip = true
+          Credit = 200.0M }
+
     areEqual expected (upgradeCustomer customerSTD)
-    
+
 let assertSTD =
-    let expected = { Id = 3; IsVip = false; Credit = 100.0M }
-    areEqual expected (upgradeCustomer { Id = 3; IsVip = false; Credit = 100.0M })
+    let expected =
+        { Id = 3
+          IsVip = false
+          Credit = 100.0M }
+
+    areEqual
+        expected
+        (upgradeCustomer
+            { Id = 3
+              IsVip = false
+              Credit = 100.0M })
