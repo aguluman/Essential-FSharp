@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "km2nudISZv4zU23egHhrhLaHRKbktScg4gBCKVUKy3ZuSucWv2Ce/ZjAF5qQdHo71zSLAtCsi2in2HBpq5pjyQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Chikosolu Akunyili\\RiderProjects\\Essential F#\\Chapter 06\\Source\\Source.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Chikosolu Akunyili\\.nuget\\packages\\fsharp.core\\7.0.400\\fsharp.core.7.0.400.nupkg.sha512"
+  ],
+  "logs": []
+}
