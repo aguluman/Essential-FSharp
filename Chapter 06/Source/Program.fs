@@ -43,12 +43,8 @@ let import (dataReader: DataReader) path =
     | Ok data -> data |> parse |> output
     | Error ex -> printfn $"Error: {ex.Message}"
 
-(*let import path =
-    match path |> readFile with
-    | Ok data -> data |> parse |> Seq.iter (fun x -> printfn $"{x}")
-    | Error ex -> printfn $"Error: {ex.Message}"*)
-
 let importWithFileReader = import readFile
+
 
 let fakeDataReader: DataReader =
     fun _ ->
@@ -60,7 +56,6 @@ let fakeDataReader: DataReader =
             "Sarah||0|0||"
         }
         |> Ok
-
 
 
 [<EntryPoint>]
