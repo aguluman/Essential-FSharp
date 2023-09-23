@@ -13,11 +13,10 @@ type Customer =
 type ValidatedCustomer =
     { CustomerId: string
       Email: string option
-      IsEligible: string
-      IsRegistered: string
-      DateRegistered: string option
-      Discount: string }
-
+      IsEligible: bool
+      IsRegistered: bool
+      DateRegistered: DateTime option
+      Discount: decimal option }
 
 type ValidationError =
     | MissingData of name: string
@@ -40,16 +39,15 @@ let readFile: FileReader =
 
 let parseLine (line: string) : Customer option =
     match line.Split('|') with
-    | [| customerId; email; isEligible; isRegistered; dateRegistered; discount |] ->
+    | [| customerId; email; eligible; registered; dateRegistered; discount |] ->
         Some
             { CustomerId = customerId
               Email = email
-              IsEligible = isEligible
-              IsRegistered = isRegistered
+              IsEligible = eligible
+              IsRegistered = registered
               DateRegistered = dateRegistered
               Discount = discount }
     | _ -> None
-
 
 let (|ParseRegex|_|) regex str =
     let m = Regex(regex).Match(str)
@@ -78,16 +76,17 @@ let (|IsBoolean|_|) (input: string) =
     | _ -> None
 
 let (|IsValidDate|_|) (input: string) =
-    let success, value = input |> DateTime.TryParse
+    let (success, value) = input |> DateTime.TryParse
     if success then Some value else None
 
-//We are now creating valid functions using active pattens and the new ValidationError discrimination union type.
+// string -> Result<string, ValidationError>
 let validateCustomerId customerId =
     if customerId <> "" then
         Ok customerId
     else
         Error(MissingData "CustomerId")
 
+// string -> Result<string option, ValidationError>
 let validateEmail email =
     if email <> "" then
         match email with
@@ -96,22 +95,26 @@ let validateEmail email =
     else
         Ok None
 
+// string -> Result<bool, ValidationError>
 let validateIsEligible (isEligible: string) =
     match isEligible with
     | IsBoolean b -> Ok b
     | _ -> Error(InvalidData("IsEligible", isEligible))
 
+// string -> Result<bool, ValidationError>
 let validateIsRegistered (isRegistered: string) =
     match isRegistered with
     | IsBoolean b -> Ok b
     | _ -> Error(InvalidData("IsRegistered", isRegistered))
 
+// string -> Result<DateTime option, ValidationError>
 let validateDateRegistered (dateRegistered: string) =
     match dateRegistered with
     | IsEmptyString -> Ok None
     | IsValidDate dt -> Ok(Some dt)
     | _ -> Error(InvalidData("DateRegistered", dateRegistered))
 
+// string -> Result<decimal option, ValidationError>
 let validateDiscount discount =
     match discount with
     | IsEmptyString -> Ok None
@@ -123,30 +126,10 @@ let getError input =
     | Ok _ -> []
     | Error ex -> [ ex ]
 
-(*let convertToStringOption value =
-    match value with
-    | Ok (Some v) -> Ok (Some (v.ToString()))
-    | Ok None -> Ok None
-    | Error e -> Error e
-
-let convertToString value =
-  match value with
-  | Ok v -> Ok (v.ToString())
-  | Error e -> Error e
-
-let getValueForStringOption input =
-    match convertToStringOption input with
-    | Ok v ->  v
-    | _ -> failwith "Oops, you shouldn't have got here!!!"
-
-let getValueForString input =
-    match convertToString input with
-    | Ok v ->  v
-    | _ -> failwith "Oops, you shouldn't have got here!!!"*)
 let getValue input =
     match input with
-    | Ok v ->  v
-    | _ -> failwith "Oops, you shouldn't have got here!!!"
+    | Ok v -> v
+    | _ -> failwith "Oops, you shouldn't have got here!"
 
 let create customerId email isEligible isRegistered dateRegistered discount =
     { CustomerId = customerId
@@ -156,13 +139,10 @@ let create customerId email isEligible isRegistered dateRegistered discount =
       DateRegistered = dateRegistered
       Discount = discount }
 
-//Next we create a list of potential errors using a list comprehension, concatenate them using List.concat,
-//and then check to see if the result has any errors, if there are no errors, we can safely call the create function
-
 let validate (input: Customer) : Result<ValidatedCustomer, ValidationError list> =
     let customerId = input.CustomerId |> validateCustomerId
     let email = input.Email |> validateEmail
-    let isEligible =  input.IsEligible |> validateIsEligible
+    let isEligible = input.IsEligible |> validateIsEligible
     let isRegistered = input.IsRegistered |> validateIsRegistered
     let dateRegistered = input.DateRegistered |> validateDateRegistered
     let discount = input.Discount |> validateDiscount
@@ -182,7 +162,7 @@ let validate (input: Customer) : Result<ValidatedCustomer, ValidationError list>
             create
                 (customerId |> getValue)
                 (email |> getValue)
-                (isEligible  |> getValue)
+                (isEligible |> getValue)
                 (isRegistered |> getValue)
                 (dateRegistered |> getValue)
                 (discount |> getValue)
@@ -191,40 +171,22 @@ let validate (input: Customer) : Result<ValidatedCustomer, ValidationError list>
 
 let parse (data: string seq) =
     data
-    |> Seq.skip 1 //Ignore the header row.
+    |> Seq.skip 1
     |> Seq.map parseLine
-    |> Seq.choose id //Ignores None and unwraps Some values.
+    |> Seq.choose id
     |> Seq.map validate
 
-
 let output data =
-    data |> Seq.iter (fun x -> printfn $"{x}")
+    data |> Seq.iter (printfn "%A")
 
 let import (fileReader: FileReader) path =
     match path |> fileReader with
     | Ok data -> data |> parse |> output
-    | Error ex -> printfn $"Error: {ex.Message}"
-
-let importWithFileReader = import readFile
-
-
-let fakeDataReader: FileReader =
-    fun _ ->
-        seq {
-            "CustomerId|Email|Eligible|Registered|DateRegistered|Discount"
-            "John|john@test.com|1|1|2015-01-23|0.1"
-            "Mary|mary@test.com|1|1|2018-12-12|0.1"
-            "Richard|richard@nottest.com|0|1|2016-03-23|0.0"
-            "Sarah||0|0||"
-        }
-        |> Ok
-
+    | Error ex -> printfn "Error: %A" ex
 
 [<EntryPoint>]
-let main _ =
+let main argv =
     Path.Combine(__SOURCE_DIRECTORY__, "resources", "customers.csv")
-    |> importWithFileReader
-
-    //import fakeDataReader "_"
+    |> import readFile
 
     0
