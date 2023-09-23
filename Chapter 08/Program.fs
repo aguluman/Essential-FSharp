@@ -1,6 +1,7 @@
 ﻿open System
 open System.IO
 open System.Text.RegularExpressions
+open FsToolkit.ErrorHandling.ValidationCE
 
 type Customer =
     { CustomerId: string
@@ -76,7 +77,7 @@ let (|IsBoolean|_|) (input: string) =
     | _ -> None
 
 let (|IsValidDate|_|) (input: string) =
-    let (success, value) = input |> DateTime.TryParse
+    let success, value = input |> DateTime.TryParse
     if success then Some value else None
 
 // string -> Result<string, ValidationError>
@@ -126,48 +127,48 @@ let getError input =
     | Ok _ -> []
     | Error ex -> [ ex ]
 
-let getValue input =
-    match input with
+let getValue = function
     | Ok v -> v
-    | _ -> failwith "Oops, you shouldn't have got here!"
+    | _ -> failwith "Unexpected error during validation"
 
-let create customerId email isEligible isRegistered dateRegistered discount =
-    { CustomerId = customerId
-      Email = email
-      IsEligible = isEligible
-      IsRegistered = isRegistered
-      DateRegistered = dateRegistered
-      Discount = discount }
 
-let validate (input: Customer) : Result<ValidatedCustomer, ValidationError list> =
-    let customerId = input.CustomerId |> validateCustomerId
-    let email = input.Email |> validateEmail
-    let isEligible = input.IsEligible |> validateIsEligible
-    let isRegistered = input.IsRegistered |> validateIsRegistered
-    let dateRegistered = input.DateRegistered |> validateDateRegistered
-    let discount = input.Discount |> validateDiscount
+//Added Computation expression for Applicatives
+let validate (input:Customer) : Result<ValidatedCustomer, ValidationError list> =
+    validation {
+        let! customerId =
+            input.CustomerId
+            |> validateCustomerId
+            |> Result.mapError (fun ex -> [ ex ])
+        and! email =
+            input.Email
+            |> validateEmail
+            |> Result.mapError (fun ex -> [ ex ])
+        and! isEligible =
+            input.IsEligible
+            |> validateIsEligible
+            |> Result.mapError (fun ex -> [ ex ])
+        and! isRegistered =
+            input.IsRegistered
+            |> validateIsRegistered
+            |> Result.mapError (fun ex -> [ ex ])
+        and! dateRegistered =
+            input.DateRegistered
+            |> validateDateRegistered
+            |> Result.mapError (fun ex -> [ ex ])
+        and! discount =
+            input.Discount
+            |> validateDiscount
+            |> Result.mapError (fun ex -> [ ex ])
 
-    let errors =
-        [ customerId |> getError
-          email |> getError
-          isEligible |> getError
-          isRegistered |> getError
-          dateRegistered |> getError
-          discount |> getError ]
-        |> List.concat
-
-    match errors with
-    | [] ->
-        Ok(
-            create
-                (customerId |> getValue)
-                (email |> getValue)
-                (isEligible |> getValue)
-                (isRegistered |> getValue)
-                (dateRegistered |> getValue)
-                (discount |> getValue)
-        )
-    | _ -> Error errors
+        return
+            { CustomerId = customerId
+              Email = email
+              IsEligible = isEligible
+              IsRegistered = isRegistered
+              DateRegistered = dateRegistered
+              Discount = discount }
+    }
+//Computation expressions are the only place in F# where the return keyword is required.
 
 let parse (data: string seq) =
     data
