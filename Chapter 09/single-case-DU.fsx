@@ -8,25 +8,27 @@ type Total = decimal
 
 type DiscountPercentage = decimal
 
-type ValidationError = InputOutOFRange of string
+type ValidationError = InputOutOfRange of string
 
-type Spend = private { Spend : decimal }
+
+//type Spend = private { Spend : decimal } ==> This is a record.
+type Spend = private Spend of decimal
 
 module Spend =
-
-    let value input = input.Spend
+    //let value input =  Spend input this wraps a decimal inside a spend.
+    let value input = input |> fun (Spend value) -> value //this unwraps he decimal from a Spend.
 
     let create input =
         if input >= 0.0M && input <= 1000.0M then
-            Ok { Spend = input }
+            Ok  (Spend  input)
         else
-            Error (InputOutOFRange "You can only spend between 0 and 1000")
+            Error (InputOutOfRange "You can only spend between 0 and 1000")
+
 
 type Customer =
     | Eligible of RegisteredCustomer
     | Registered of RegisteredCustomer
     | Guest of UnregisteredCustomer
-
 
 module Customer =
     let calculateDiscountPercentage spend customer :DiscountPercentage =
@@ -46,7 +48,8 @@ let mary = Eligible { Id = CustomerId "Mary" }
 let richard = Registered { Id = CustomerId "Richard" }
 let sarah = Guest { Id = CustomerId "Sarah" }
 
-let isEqualTo expected actual = actual = expected
+let isEqualTo expected actual =
+    actual = expected
 
 let assertEqual customer spent expected =
     Spend.create spent
