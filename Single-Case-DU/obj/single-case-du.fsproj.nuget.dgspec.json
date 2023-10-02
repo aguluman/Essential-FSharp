@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Chapter 06\\Source\\Source.fsproj": {}
+    "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Single-Case-DU\\single-case-du.fsproj": {}
   },
   "projects": {
-    "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Chapter 06\\Source\\Source.fsproj": {
+    "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Single-Case-DU\\single-case-du.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Chapter 06\\Source\\Source.fsproj",
-        "projectName": "Source",
-        "projectPath": "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Chapter 06\\Source\\Source.fsproj",
+        "projectUniqueName": "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Single-Case-DU\\single-case-du.fsproj",
+        "projectName": "single-case-du",
+        "projectPath": "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Single-Case-DU\\single-case-du.fsproj",
         "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Chapter 06\\Source\\obj\\",
+        "outputPath": "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Single-Case-DU\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -38,6 +38,11 @@
               "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
               "target": "Package",
               "version": "[7.0.400, )",
+              "generatePathProperty": true
+            },
+            "FsToolkit.ErrorHandling": {
+              "target": "Package",
+              "version": "[4.9.0, )",
               "generatePathProperty": true
             }
           },

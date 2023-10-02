@@ -55,6 +55,22 @@
             "locale": "zh-Hant"
           }
         }
+      },
+      "FsToolkit.ErrorHandling/4.9.0": {
+        "type": "package",
+        "dependencies": {
+          "FSharp.Core": "7.0.300"
+        },
+        "compile": {
+          "lib/netstandard2.1/FsToolkit.ErrorHandling.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/netstandard2.1/FsToolkit.ErrorHandling.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
       }
     }
   },
@@ -100,11 +116,69 @@
         "lib/netstandard2.1/zh-Hans/FSharp.Core.resources.dll",
         "lib/netstandard2.1/zh-Hant/FSharp.Core.resources.dll"
       ]
+    },
+    "FsToolkit.ErrorHandling/4.9.0": {
+      "sha512": "Z8p+upgAX6nipdMMFUlbr0KajChF20BZ1aTzAokQ/aAboBt5AWKIfNpTHSq+veM2aPdoPJTrbvIA7NR0cL2BIQ==",
+      "type": "package",
+      "path": "fstoolkit.errorhandling/4.9.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "License",
+        "README.md",
+        "fable/AssemblyInfo.fs",
+        "fable/Async.fs",
+        "fable/AsyncOption.fs",
+        "fable/AsyncOptionCE.fs",
+        "fable/AsyncOptionOp.fs",
+        "fable/AsyncResult.fs",
+        "fable/AsyncResultCE.fs",
+        "fable/AsyncResultOp.fs",
+        "fable/AsyncResultOption.fs",
+        "fable/AsyncResultOptionCE.fs",
+        "fable/AsyncResultOptionOp.fs",
+        "fable/AsyncValidation.fs",
+        "fable/AsyncValidationCE.fs",
+        "fable/AsyncValidationOp.fs",
+        "fable/FsToolkit.ErrorHandling.fsproj",
+        "fable/List.fs",
+        "fable/Option.fs",
+        "fable/OptionCE.fs",
+        "fable/OptionOp.fs",
+        "fable/Result.fs",
+        "fable/ResultCE.fs",
+        "fable/ResultOp.fs",
+        "fable/ResultOption.fs",
+        "fable/ResultOptionCE.fs",
+        "fable/ResultOptionOp.fs",
+        "fable/Seq.fs",
+        "fable/Shims.fs",
+        "fable/Validation.fs",
+        "fable/ValidationCE.fs",
+        "fable/ValidationOp.fs",
+        "fable/ValueOption.fs",
+        "fable/ValueOptionCE.fs",
+        "fable/obj/Debug/netstandard2.1/.NETStandard,Version=v2.1.AssemblyAttributes.fs",
+        "fable/obj/Debug/netstandard2.1/FsToolkit.ErrorHandling.AssemblyInfo.fs",
+        "fable/obj/Release/netstandard2.0/.NETStandard,Version=v2.0.AssemblyAttributes.fs",
+        "fable/obj/Release/netstandard2.0/FsToolkit.ErrorHandling.AssemblyInfo.fs",
+        "fable/obj/Release/netstandard2.1/.NETStandard,Version=v2.1.AssemblyAttributes.fs",
+        "fable/obj/Release/netstandard2.1/FsToolkit.ErrorHandling.AssemblyInfo.fs",
+        "fstoolkit.errorhandling.4.9.0.nupkg.sha512",
+        "fstoolkit.errorhandling.nuspec",
+        "lib/netstandard2.0/FsToolkit.ErrorHandling.dll",
+        "lib/netstandard2.0/FsToolkit.ErrorHandling.pdb",
+        "lib/netstandard2.0/FsToolkit.ErrorHandling.xml",
+        "lib/netstandard2.1/FsToolkit.ErrorHandling.dll",
+        "lib/netstandard2.1/FsToolkit.ErrorHandling.pdb",
+        "lib/netstandard2.1/FsToolkit.ErrorHandling.xml"
+      ]
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "FSharp.Core >= 7.0.400"
+      "FSharp.Core >= 7.0.400",
+      "FsToolkit.ErrorHandling >= 4.9.0"
     ]
   },
   "packageFolders": {
@@ -113,11 +187,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Chapter 06\\Source\\Source.fsproj",
-      "projectName": "Source",
-      "projectPath": "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Chapter 06\\Source\\Source.fsproj",
+      "projectUniqueName": "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Single-Case-DU\\single-case-du.fsproj",
+      "projectName": "single-case-du",
+      "projectPath": "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Single-Case-DU\\single-case-du.fsproj",
       "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Chapter 06\\Source\\obj\\",
+      "outputPath": "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Single-Case-DU\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config"
@@ -144,6 +218,11 @@
             "include": "Runtime, Compile, Build, Native, Analyzers, BuildTransitive",
             "target": "Package",
             "version": "[7.0.400, )",
+            "generatePathProperty": true
+          },
+          "FsToolkit.ErrorHandling": {
+            "target": "Package",
+            "version": "[4.9.0, )",
             "generatePathProperty": true
           }
         },

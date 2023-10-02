@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "1GCLqkaguw17+SFfCYXSHGgprfiej045aaoz7pNmdDGxiT55A88b7XCOIhtGAV7gtrYYmsf3SqsnC+lf7g+dcg==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Single-Case-DU\\single-case-du.fsproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\USER\\.nuget\\packages\\fsharp.core\\7.0.400\\fsharp.core.7.0.400.nupkg.sha512",
+    "C:\\Users\\USER\\.nuget\\packages\\fstoolkit.errorhandling\\4.9.0\\fstoolkit.errorhandling.4.9.0.nupkg.sha512"
+  ],
+  "logs": []
+}

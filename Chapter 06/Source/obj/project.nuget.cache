@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "km2nudISZv4zU23egHhrhLaHRKbktScg4gBCKVUKy3ZuSucWv2Ce/ZjAF5qQdHo71zSLAtCsi2in2HBpq5pjyQ==",
+  "dgSpecHash": "3S50bEiX4R7dJedI8V1fKOpJm4r/Jy5fo/iPXApNTfrgNBv00V4oORg8lmB8Pwq9csc+3F9h7iBZLjVee7zlbg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Chikosolu Akunyili\\RiderProjects\\Essential F#\\Chapter 06\\Source\\Source.fsproj",
+  "projectFilePath": "C:\\Users\\USER\\OneDrive\\Documents\\GitHub\\Essential-FSharp\\Chapter 06\\Source\\Source.fsproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Chikosolu Akunyili\\.nuget\\packages\\fsharp.core\\7.0.400\\fsharp.core.7.0.400.nupkg.sha512"
+    "C:\\Users\\USER\\.nuget\\packages\\fsharp.core\\7.0.400\\fsharp.core.7.0.400.nupkg.sha512"
   ],
   "logs": []
 }
