@@ -1,0 +1,2 @@
+﻿This is a regex for handling most cases in an email.
+@"^[a-zA-Z0-9.!#$%&'*+\/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$"

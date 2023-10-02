@@ -8,71 +8,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fc02afce-ef41-4571-a97c-a42118040be5" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../Chapter 08/resources/customers.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Single-Case-DU.dir/.idea/encodings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Single-Case-DU.dir/.idea/indexLayout.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Single-Case-DU.dir/.idea/projectSettingsUpdater.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Single-Case-DU.dir/.idea/sonarlint/issuestore/8/4/84fb7068283b7685f768a4b480702481ef48da9d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Single-Case-DU.dir/.idea/sonarlint/issuestore/d/2/d207da3745587fcda71af194ad1b946057ef85b3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Single-Case-DU.dir/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Single-Case-DU.dir/.idea/sonarlint/securityhotspotstore/8/4/84fb7068283b7685f768a4b480702481ef48da9d" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Single-Case-DU.dir/.idea/sonarlint/securityhotspotstore/d/2/d207da3745587fcda71af194ad1b946057ef85b3" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Single-Case-DU.dir/.idea/sonarlint/securityhotspotstore/index.pb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Single-Case-DU.dir/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Single-Case-DU.dir/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/FSharp.Core.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/FsToolkit.ErrorHandling.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/cs/FSharp.Core.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/de/FSharp.Core.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/es/FSharp.Core.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/fr/FSharp.Core.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/it/FSharp.Core.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/ja/FSharp.Core.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/ko/FSharp.Core.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/pl/FSharp.Core.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/pt-BR/FSharp.Core.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/ru/FSharp.Core.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/single-case-du.deps.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/single-case-du.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/single-case-du.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/single-case-du.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/single-case-du.runtimeconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/tr/FSharp.Core.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/zh-Hans/FSharp.Core.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/bin/Debug/net7.0/zh-Hant/FSharp.Core.resources.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/.NETCoreApp,Version=v7.0.AssemblyAttributes.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/apphost.exe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/ref/single-case-du.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/refint/single-case-du.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.AssemblyInfo.fs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.AssemblyInfoInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.assets.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.dll" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.fsproj.AssemblyReference.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.fsproj.CopyComplete" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.fsproj.CoreCompileInputs.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.fsproj.FileListAbsolute.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.genruntimeconfig.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.pdb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/project.packagespec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/single-case-du.fsproj.nuget.dgspec.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/single-case-du.fsproj.nuget.g.props" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/obj/single-case-du.fsproj.nuget.g.targets" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/customers.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter 06/Source/obj/Debug/net7.0/Source.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 06/Source/obj/Debug/net7.0/Source.assets.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter 06/Source/obj/Debug/net7.0/Source.fsproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 06/Source/obj/Debug/net7.0/Source.fsproj.AssemblyReference.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter 06/Source/obj/Source.fsproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 06/Source/obj/Source.fsproj.nuget.dgspec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter 06/Source/obj/Source.fsproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 06/Source/obj/Source.fsproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter 06/Source/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 06/Source/obj/project.assets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter 06/Source/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 06/Source/obj/project.nuget.cache" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter 06/Source/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 06/Source/obj/project.packagespec.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter 06/Source/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 06/Source/obj/rider.project.restore.info" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter 08/obj/Chapter 08.fsproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 08/obj/Chapter 08.fsproj.nuget.g.props" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Chapter 08/obj/Debug/net7.0/Chapter 08.AssemblyInfo.fs" beforeDir="false" afterPath="$PROJECT_DIR$/../Chapter 08/obj/Debug/net7.0/Chapter 08.AssemblyInfo.fs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/note.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test.fsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Single-Case-DU.dir/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Single-Case-DU.dir/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net7.0/single-case-du.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net7.0/single-case-du.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net7.0/single-case-du.exe" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net7.0/single-case-du.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/Debug/net7.0/single-case-du.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/net7.0/single-case-du.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/apphost.exe" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/apphost.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/ref/single-case-du.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/ref/single-case-du.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/refint/single-case-du.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/refint/single-case-du.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.AssemblyInfo.fs" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.AssemblyInfo.fs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.assets.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.fsproj.AssemblyReference.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.fsproj.AssemblyReference.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.fsproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.fsproj.CoreCompileInputs.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.fsproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.fsproj.FileListAbsolute.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.genruntimeconfig.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.genruntimeconfig.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/net7.0/single-case-du.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.assets.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.assets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.nuget.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.nuget.cache" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/project.packagespec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/project.packagespec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.model.nuget.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/rider.project.restore.info" beforeDir="false" afterPath="$PROJECT_DIR$/obj/rider.project.restore.info" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/single-case-du.fsproj.nuget.dgspec.json" beforeDir="false" afterPath="$PROJECT_DIR$/obj/single-case-du.fsproj.nuget.dgspec.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/single-case-du.fsproj.nuget.g.props" beforeDir="false" afterPath="$PROJECT_DIR$/obj/single-case-du.fsproj.nuget.g.props" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -118,9 +77,9 @@
   },
   &quot;keyToStringList&quot;: {
     &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\USER\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\USER\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\USER\\AppData\\Local\\Symbols\\src&quot;
+      &quot;C:\\Users\\Chikosolu Akunyili\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\Chikosolu Akunyili\\AppData\\Roaming\\JetBrains\\Rider2023.2\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\Chikosolu Akunyili\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
 }</component>
@@ -158,6 +117,10 @@
       <workItem from="1696234509899" duration="871000" />
       <workItem from="1696237443004" duration="3672000" />
       <workItem from="1696247879179" duration="39000" />
+      <workItem from="1696251156108" duration="5793000" />
+      <workItem from="1696261184619" duration="320000" />
+      <workItem from="1696261532753" duration="392000" />
+      <workItem from="1696262316472" duration="770000" />
     </task>
     <servers />
   </component>

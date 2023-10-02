@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Chikosolu Akunyili\\RiderProjects\\Essential F#\\Single-Case-DU\\single-case-du.fsproj": {}
+    "C:\\Users\\Chikosolu Akunyili\\RiderProjects\\Essential F#\\Refactored-SCDU\\Refactored-SCDU.fsproj": {}
   },
   "projects": {
-    "C:\\Users\\Chikosolu Akunyili\\RiderProjects\\Essential F#\\Single-Case-DU\\single-case-du.fsproj": {
+    "C:\\Users\\Chikosolu Akunyili\\RiderProjects\\Essential F#\\Refactored-SCDU\\Refactored-SCDU.fsproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Chikosolu Akunyili\\RiderProjects\\Essential F#\\Single-Case-DU\\single-case-du.fsproj",
-        "projectName": "single-case-du",
-        "projectPath": "C:\\Users\\Chikosolu Akunyili\\RiderProjects\\Essential F#\\Single-Case-DU\\single-case-du.fsproj",
+        "projectUniqueName": "C:\\Users\\Chikosolu Akunyili\\RiderProjects\\Essential F#\\Refactored-SCDU\\Refactored-SCDU.fsproj",
+        "projectName": "Refactored-SCDU",
+        "projectPath": "C:\\Users\\Chikosolu Akunyili\\RiderProjects\\Essential F#\\Refactored-SCDU\\Refactored-SCDU.fsproj",
         "packagesPath": "C:\\Users\\Chikosolu Akunyili\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Chikosolu Akunyili\\RiderProjects\\Essential F#\\Single-Case-DU\\obj\\",
+        "outputPath": "C:\\Users\\Chikosolu Akunyili\\RiderProjects\\Essential F#\\Refactored-SCDU\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Chikosolu Akunyili\\AppData\\Roaming\\NuGet\\NuGet.Config",

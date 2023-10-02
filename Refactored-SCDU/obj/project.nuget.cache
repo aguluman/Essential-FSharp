@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "p65VUBCWUdqea2iVMGGO5zVaDmTGzhHBW5ThlZbcbyqelB0wgNYmNWbY4/Gw5QOTA0G5yYQFBaqKZVugaJDYFg==",
+  "dgSpecHash": "orLMZvFzInRMELL1g7W6Sb+pxSPDZg8C0tYhflRY9Z/EbN1O2Ca5Ad6QfttJhEtTGAtBX3HHNFa+Om63S3pP3w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Chikosolu Akunyili\\RiderProjects\\Essential F#\\Single-Case-DU\\single-case-du.fsproj",
+  "projectFilePath": "C:\\Users\\Chikosolu Akunyili\\RiderProjects\\Essential F#\\Refactored-SCDU\\Refactored-SCDU.fsproj",
   "expectedPackageFiles": [
     "C:\\Users\\Chikosolu Akunyili\\.nuget\\packages\\fsharp.core\\7.0.400\\fsharp.core.7.0.400.nupkg.sha512",
     "C:\\Users\\Chikosolu Akunyili\\.nuget\\packages\\fstoolkit.errorhandling\\4.9.0\\fstoolkit.errorhandling.4.9.0.nupkg.sha512"
