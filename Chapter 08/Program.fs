@@ -122,15 +122,18 @@ let validateDiscount discount =
     | IsDecimal value -> Ok(Some value)
     | _ -> Error(InvalidData("Discount", discount))
 
-let getError input =
-    match input with
-    | Ok _ -> []
-    | Error ex -> [ ex ]
 
-let getValue = function
-    | Ok v -> v
-    | _ -> failwith "Unexpected error during validation"
 
+
+let create customerId email isEligible isRegistered dateRegistered discount =
+    {
+        CustomerId = customerId
+        Email = email
+        IsEligible = isEligible
+        IsRegistered = isRegistered
+        DateRegistered = dateRegistered
+        Discount = discount
+    }
 
 //Added Computation expression for Applicatives
 let validate (input:Customer) : Result<ValidatedCustomer, ValidationError list> =
@@ -160,13 +163,8 @@ let validate (input:Customer) : Result<ValidatedCustomer, ValidationError list> 
             |> validateDiscount
             |> Result.mapError (fun ex -> [ ex ])
 
-        return
-            { CustomerId = customerId
-              Email = email
-              IsEligible = isEligible
-              IsRegistered = isRegistered
-              DateRegistered = dateRegistered
-              Discount = discount }
+        return create customerId email isEligible isRegistered dateRegistered discount
+
     }
 //Computation expressions are the only place in F# where the return keyword is required.
 
@@ -186,7 +184,7 @@ let import (fileReader: FileReader) path =
     | Error ex -> printfn "Error: %A" ex
 
 [<EntryPoint>]
-let main argv =
+let main _argv =
     Path.Combine(__SOURCE_DIRECTORY__, "resources", "customers.csv")
     |> import readFile
 
