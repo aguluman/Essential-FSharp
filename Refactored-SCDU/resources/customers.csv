@@ -1,0 +1,5 @@
+﻿CustomerId|Email|Eligible|Registered|DateRegistered|Discount
+John||1|1|2015-01-23|0.1
+Mary||1|1|2018-12-12|0.1
+Richard|richard@nottest.com|0|1|2016-03-23|0.0
+Sarah||0|0||

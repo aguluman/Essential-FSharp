@@ -8,10 +8,17 @@
 
   <ItemGroup>
     <Compile Include="Program.fs" />
+    <Content Include="resources\customers.csv" />
+    <Content Include=".gitignore" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FsToolkit.ErrorHandling" Version="4.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Remove=".idea\**" />
+    <EmbeddedResource Remove="obj\**" />
   </ItemGroup>
 
 </Project>
