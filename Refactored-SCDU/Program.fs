@@ -34,167 +34,157 @@ type Customer =
     | Registered of RegisteredCustomer
     | Guest of GuestCustomer
 
-type ImportCustomer = CustomerData -> Result<Customer, List<ValidationError>>
-
 type FileReader = string -> Result<string seq, exn>
 
+module FileReader =
+    let readFile: string -> Result<string seq, exn> =
+        fun path ->
+            try
+                seq {
+                    use reader = new StreamReader(File.OpenRead(path))
 
-let readFile: FileReader =
-    fun path ->
-        try
-            seq {
-                use reader = new StreamReader(File.OpenRead(path))
-
-                while not reader.EndOfStream do
-                    yield reader.ReadLine()
-            }
-            |> Ok
-        with ex ->
-            Error ex
-
-let parseLine (line: string) : CustomerData option =
-    match line.Split('|') with
-    | [| customerId; email; eligible; registered; dateRegistered; discount |] ->
-        Some
-            { CustomerId = customerId
-              Email = email
-              IsEligible = eligible
-              IsRegistered = registered
-              DateRegistered = dateRegistered
-              Discount = discount }
-    | _ -> None
-
-let (|ParseRegex|_|) regex str =
-    let m = Regex(regex).Match(str)
-
-    if m.Success then
-        Some(List.tail [ for x in m.Groups -> x.Value ])
-    else
-        None
-
-let (|IsValidEmail|_|) input =
-    match input with
-    | ParseRegex ".*?@(.*)" [ _ ] -> Some input
-    | _ -> None
-
-let (|IsEmptyString|_|) (input: string) =
-    if input.Trim() = "" then Some() else None
-
-let (|IsDecimal|_|) (input: string) =
-    let success, value = Decimal.TryParse input
-    if success then Some value else None
-
-let (|IsBoolean|_|) (input: string) =
-    match input with
-    | "1" -> Some true
-    | "0" -> Some false
-    | _ -> None
-
-let (|IsValidDate|_|) (input: string) =
-    let success, value = input |> DateTime.TryParse
-    if success then Some value else None
-
-let validateCustomerId customerId =
-    if customerId <> "" then
-        Ok customerId
-    else
-        Error[MissingData "CustomerId"]
+                    while not reader.EndOfStream do
+                        yield reader.ReadLine()
+                }
+                |> Ok
+            with ex ->
+                Error ex
 
 
-let validateEmail email =
-    if email <> "" then
-        match email with
-        | IsValidEmail _ -> Ok(Some email)
-        | _ -> Error[InvalidData("Email", email)]
-    else
-        Ok None
+// Parsing.fs
+module Parsing =
+    let readFile: FileReader =
+        fun path ->
+            try
+                seq {
+                    use reader = new StreamReader(File.OpenRead(path))
 
-let validateIsEligible (isEligible: string) =
-    match isEligible with
-    | IsBoolean b -> Ok b
-    | _ -> Error[InvalidData("IsEligible", isEligible)]
+                    while not reader.EndOfStream do
+                        yield reader.ReadLine()
+                }
+                |> Ok
+            with ex ->
+                Error ex
 
-let validateIsRegistered (isRegistered: string) =
-    match isRegistered with
-    | IsBoolean b -> Ok b
-    | _ -> Error[InvalidData("IsRegistered", isRegistered)]
-
-let validateDateRegistered (dateRegistered: string) =
-    match dateRegistered with
-    | IsEmptyString -> Ok None
-    | IsValidDate dt -> Ok(Some dt)
-    | _ -> Error[InvalidData("DateRegistered", dateRegistered)]
-
-let validateDiscount discount =
-    match discount with
-    | IsEmptyString -> Ok None
-    | IsDecimal value -> Ok(Some value)
-    | _ -> Error[InvalidData("Discount", discount)]
-
-let validateName (name:string) =
-    if name |> Seq.forall (fun c -> Char.IsLetter(c) || c = ' ') then
-        Ok name
-    else
-        Error[InvalidData("CustomerId", name)]
+    let parseLine (line: string) : CustomerData option =
+        match line.Split('|') with
+        | [| customerId; email; eligible; registered; dateRegistered; discount |] ->
+            Some
+                { CustomerId = customerId
+                  Email = email
+                  IsEligible = eligible
+                  IsRegistered = registered
+                  DateRegistered = dateRegistered
+                  Discount = discount }
+        | _ -> None
 
 
-let validateRegisteredCustomer (input: CustomerData) : Result<Customer, ValidationError list> =
-    validation {
-        let! customerId = validateCustomerId input.CustomerId
-        and! email = validateEmail input.Email
-        and! isEligible = validateIsEligible input.IsEligible
-        and! dateRegistered = validateDateRegistered input.DateRegistered
-        and! discount = validateDiscount input.Discount
+module Validators =
+    let validateWithPattern pattern errorMessage input =
+        match pattern input with
+        | Some data -> Ok data
+        | None -> Error [ InvalidData(errorMessage, input) ]
 
-        let email =
-            match email with
-            | Some e -> e
-            | None -> failwith "Expected email but found None"
-        let dateRegistered =
-            match dateRegistered with
-            | Some dt -> dt
-            | None -> failwith "Expected dateRegistered but found None"
-        let discount =
-            match discount with
-            | Some dis -> dis
-            | None -> failwith "Expected discount but found None"
-
-        return
-            Registered
-                { CustomerId = CustomerId customerId
-                  Email = Email email
-                  IsEligible = IsEligible isEligible
-                  DateRegistered = DateRegistered dateRegistered
-                  Discount = Discount discount }
-    }
-
-let validateGuestData (input: CustomerData) : Result<Customer, ValidationError list> =
-    validation {
-        let! name = input.CustomerId |> validateName |> Result.mapError id
-        return Guest { Name = name }
-    }
+    let validateCustomerId customerId =
+        if customerId |> String.IsNullOrWhiteSpace then
+            Error [ MissingData "CustomerId" ]
+        elif customerId |> Seq.forall (fun c -> Char.IsLetter(c) || c = ' ') then
+            Ok(CustomerId customerId)
+        else
+            Error [ InvalidData("A non-alphabet was present in CustomerId", customerId) ]
 
 
-let validate (data: CustomerData) =
-    match data.IsRegistered with
-    | "1" -> validateRegisteredCustomer data
+    let validateIsEligible isEligible =
+        let isBoolean (str: string) =
+            match str with
+            | "1" -> Some true
+            | "0" -> Some false
+            | _ -> None
 
-    | _ -> validateGuestData data
+        isEligible
+        |> validateWithPattern isBoolean "IsEligible"
+        |> Result.map IsEligible
+
+    let validateDiscount discount =
+        let isDecimal (str: string) =
+            match Decimal.TryParse str with
+            | true, value -> Some value
+            | _ -> None
+
+        discount |> validateWithPattern isDecimal "Discount" |> Result.map Discount
+
+    let validateDateRegistered dateRegistered =
+        let isValidDate (str: string) =
+            match DateTime.TryParse str with
+            | true, date -> Some date
+            | _ -> None
+
+        dateRegistered
+        |> validateWithPattern isValidDate "DateRegistered"
+        |> Result.map DateRegistered
+
+    let validateEmail email =
+        let isValidEmail str =
+            Regex(".*?@(.*)").Match str |> (fun m -> if m.Success then Some str else None)
+
+        email |> validateWithPattern isValidEmail "Email" |> Result.map Email
+
+    let validateRegisteredCustomer (input: CustomerData) : Result<Customer, ValidationError list> =
+        validation {
+            let! customerId =  input.CustomerId |> validateCustomerId
+            and! email = validateEmail input.Email
+            and! isEligible = validateIsEligible input.IsEligible
+            and! dateRegistered = validateDateRegistered input.DateRegistered
+            and! discount = validateDiscount input.Discount
+
+            return
+                Registered
+                    { CustomerId = customerId
+                      Email = email
+                      IsEligible = isEligible
+                      DateRegistered = dateRegistered
+                      Discount = discount }
+        }
+
+    let validateName (name: string) =
+        if name |> Seq.forall (fun c -> Char.IsLetter(c) || c = ' ') then
+            Ok name
+        else
+            Error [ InvalidData("A non-alphabet was present in Name", name) ]
+
+    let validateGuestData (input: CustomerData) : Result<Customer, ValidationError list> =
+        validation {
+            let! name = input.CustomerId |> validateName |> Result.mapError id
+            return Guest { Name = name }
+        }
+    (*let validateGuestData (input: CustomerData) : Result<Customer, ValidationError list> =
+        match  input.CustomerId |> validateCustomerId with
+        | Ok(CustomerId name) -> Ok(Guest {Name = name})
+        | Error e -> Error e*)
+
+    let validate (data: CustomerData) =
+        match data.IsRegistered with
+        | "1" -> validateRegisteredCustomer data
+        | _ -> validateGuestData data
 
 
-let parse (data: string seq) =
-    data |> Seq.skip 1 |> Seq.map parseLine |> Seq.choose id |> Seq.map validate
+module Application =
+    open Parsing
+    open Validators
 
-let output data = data |> Seq.iter (printfn "%A")
+    let parse (data: string seq) =
+        data |> Seq.skip 1 |> Seq.map parseLine |> Seq.choose id |> Seq.map validate
 
-let import (fileReader: FileReader) path =
-    match path |> fileReader with
-    | Ok data -> data |> parse |> output
-    | Error ex -> printfn $"Error: %A{ex}"
+    let output data = data |> Seq.iter (printfn "%A")
 
-[<EntryPoint>]
-let main _argv =
-    Path.Combine(__SOURCE_DIRECTORY__, "resources", "customers.csv")
-    |> import readFile
+    let import (fileReader: FileReader) path =
+        match fileReader path with
+        | Ok data -> data |> parse |> output
+        | Error ex -> printfn $"Error: %A{ex}"
 
-    0
+    [<EntryPoint>]
+    let main _argv =
+        Path.Combine(__SOURCE_DIRECTORY__, "resources", "customers.csv")
+        |> import readFile
+
+        0
