@@ -28,3 +28,6 @@ type FizzBuzzTwo(mapping) =
         |> fun s -> if s = "" then string n else s
 
     member _.Calculate(value) = calculate value
+
+let fizzBuzzTwo = FizzBuzzTwo([ (3, "Fizz"); (5, "Buzz") ])
+let outputTwo = fizzBuzzTwo.Calculate(77)

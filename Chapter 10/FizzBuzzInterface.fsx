@@ -1,4 +1,7 @@
 ﻿//The interface
+
+open Microsoft.FSharp.Core
+
 type IFizzBuzz =
     abstract member Calculate : int -> string
 
