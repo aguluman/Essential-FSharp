@@ -9,6 +9,17 @@ open Giraffe.ViewEngine
 open Giraffe.HttpStatusCodeHandlers
 
 
+
+let indexView =
+    html
+        []
+        [ head [] [ title [] [ str "Giraffe Example" ] ]
+          body
+              []
+              [ h1 [] [ str "I |> F#" ]
+                p [ _class "some-css-class"; _id "someId" ] [ str "Hello World from the Giraffe View Engine" ] ] ]
+
+
 let sayHelloNameHandler (name: string) : HttpHandler =
     fun (next: HttpFunc) (ctx: HttpContext) ->
         (*task {
@@ -17,11 +28,13 @@ let sayHelloNameHandler (name: string) : HttpHandler =
         }*)
         {| Response = $"Hello {name}, how are you?" |} |> ctx.WriteJsonAsync
 
-let endpoints =
+let apiRoutes =
     [ GET
-          [ route "/" (text "Hello World from the Giraffe Library and the world of API building with FSharp")
-            route "/api" (json {| Response = "Hello World!!!" |})
-            routef "/api%s" sayHelloNameHandler ] ]
+          [ route "" (json {| Response = "Hello World!" |})
+            routef "/%s" sayHelloNameHandler ] ]
+
+let endpoints =
+    [ GET [ route "/" (htmlView indexView) ]; subRoute "/api" apiRoutes ]
 
 let notFoundHandler = "Not Found" |> text |> RequestErrors.notFound
 
@@ -30,6 +43,7 @@ let configureApp (appBuilder: IApplicationBuilder) =
 
 let configureServices (services: IServiceCollection) =
     services.AddRouting().AddGiraffe() |> ignore
+
 
 [<EntryPoint>]
 let main args =
