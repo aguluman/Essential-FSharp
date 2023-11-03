@@ -123,8 +123,6 @@ let validateDiscount discount =
     | _ -> Error(InvalidData("Discount", discount))
 
 
-
-
 let create customerId email isEligible isRegistered dateRegistered discount =
     {
         CustomerId = customerId
@@ -181,7 +179,7 @@ let output data =
 let import (fileReader: FileReader) path =
     match path |> fileReader with
     | Ok data -> data |> parse |> output
-    | Error ex -> printfn "Error: %A" ex
+    | Error ex -> printfn $"Error: %A{ex}"
 
 [<EntryPoint>]
 let main _argv =
