@@ -34,7 +34,8 @@ module OptionDemo =
     let calculateOption y z =
         divide y z
         |> Option.map (fun v -> multiply v y)
-        |> Option.bind (fun t -> divide t z)  *)
+        |> Option.bind (fun t -> divide t z)
+    *)
 
     let calculate x y =
         option {
