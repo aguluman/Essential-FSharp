@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="TodoStore.fs" />
+    <Compile Include="Todos.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
@@ -18,6 +20,11 @@
     <Content Include="obj\Chapter 13.fsproj.nuget.dgspec.json" />
     <Content Include="obj\project.assets.json" />
     <Content Include="obj\project.nuget.cache" />
+    <Content Include="HttpRequests\getTodo.http" />
+    <Content Include="HttpRequests\getTodos.http" />
+    <Content Include="HttpRequests\postTodo.http" />
+    <Content Include="HttpRequests\updateTodo.http" />
+    <Content Include="HttpRequests\delete.http" />
   </ItemGroup>
 
 </Project>

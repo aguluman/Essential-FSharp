@@ -1,4 +1,3 @@
-open System
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Http
 open Microsoft.Extensions.DependencyInjection
@@ -6,8 +5,8 @@ open Microsoft.Extensions.Hosting
 open Giraffe
 open Giraffe.EndpointRouting
 open Giraffe.ViewEngine
-open Giraffe.HttpStatusCodeHandlers
-
+open Chapter_13
+open Chapter_13.TodoStore
 
 
 let indexView =
@@ -19,14 +18,14 @@ let indexView =
               [ h1 [] [ str "I |> F#" ]
                 p [ _class "some-css-class"; _id "someId" ] [ str "Hello World from the Giraffe View Engine" ] ] ]
 
-
 let sayHelloNameHandler (name: string) : HttpHandler =
-    fun (next: HttpFunc) (ctx: HttpContext) ->
+    fun (_: HttpFunc) (ctx: HttpContext) ->
         (*task {
             let msg = $"Hello {name}, how are you?"
             return! json {| Response = msg |} next ctx
         }*)
         {| Response = $"Hello {name}, how are you?" |} |> ctx.WriteJsonAsync
+
 
 let apiRoutes =
     [ GET
@@ -34,7 +33,9 @@ let apiRoutes =
             routef "/%s" sayHelloNameHandler ] ]
 
 let endpoints =
-    [ GET [ route "/" (htmlView indexView) ]; subRoute "/api" apiRoutes ]
+    [ GET [ route "/" (htmlView indexView) ]
+      subRoute "/api" apiRoutes
+      subRoute "api/todo" Todos.TodoApiRoutes.Routes ]
 
 let notFoundHandler = "Not Found" |> text |> RequestErrors.notFound
 
@@ -42,7 +43,8 @@ let configureApp (appBuilder: IApplicationBuilder) =
     appBuilder.UseRouting().UseGiraffe(endpoints).UseGiraffe(notFoundHandler)
 
 let configureServices (services: IServiceCollection) =
-    services.AddRouting().AddGiraffe() |> ignore
+    services.AddRouting().AddGiraffe().AddSingleton<TodoStore>(TodoStore())
+    |> ignore
 
 
 [<EntryPoint>]

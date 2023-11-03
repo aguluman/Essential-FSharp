@@ -1,0 +1,7 @@
+PUT http://localhost:5188/api/todo/34f83992-83ff-45f8-b0c3-311183626d79
+
+{
+    "id": "34f83992-83ff-45f8-b0c3-311183626d79",
+    "description": "Subscribe for Hyperskill Premium om 19/11/2023",
+     "isCompleted": true
+  }
