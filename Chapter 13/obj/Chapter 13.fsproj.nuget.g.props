@@ -14,5 +14,7 @@
   </ItemGroup>
   <PropertyGroup Condition=" '$(ExcludeRestorePackageImports)' != 'true' ">
     <PkgFSharp_Core Condition=" '$(PkgFSharp_Core)' == '' ">C:\Users\USER\.nuget\packages\fsharp.core\7.0.401</PkgFSharp_Core>
+    <PkgGiraffe_ViewEngine Condition=" '$(PkgGiraffe_ViewEngine)' == '' ">C:\Users\USER\.nuget\packages\giraffe.viewengine\2.0.0-alpha-1</PkgGiraffe_ViewEngine>
+    <PkgGiraffe Condition=" '$(PkgGiraffe)' == '' ">C:\Users\USER\.nuget\packages\giraffe\6.2.0</PkgGiraffe>
   </PropertyGroup>
 </Project>
