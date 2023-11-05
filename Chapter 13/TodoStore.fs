@@ -24,9 +24,10 @@ type TodoStore() =
 
     member _.Create(todo) = data.TryAdd(todo.Id, todo)
 
-    member _.Update(todo) =
-        data.TryUpdate(todo.Id, todo, data[todo.Id])
+    member _.Update(todo) = data.TryUpdate(todo.Id, todo, data[todo.Id])
 
     member _.Delete(id) = data.TryRemove id
+
     member _.Get(id) = get id
+
     member _.GetAll() = data.Values |> Seq.toArray

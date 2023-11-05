@@ -10,7 +10,7 @@ open Giraffe.EndpointRouting
 module Handlers =
 
     let viewTodos =
-        fun (next: HttpFunc) (ctx: HttpContext) ->
+        fun (_: HttpFunc) (ctx: HttpContext) ->
             let store = ctx.GetService<TodoStore>()
             store.GetAll() |> ctx.WriteJsonAsync
 
@@ -44,7 +44,7 @@ module Handlers =
                 return! json created next ctx
             }
 
-    let updateTodo (id: Guid) =
+    let updateTodo (_id: Guid) =
         fun (next: HttpFunc) (ctx: HttpContext) ->
             task {
                 let! todo = ctx.BindJsonAsync<Todo>()
