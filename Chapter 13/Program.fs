@@ -10,13 +10,14 @@ open Chapter_13.TodoStore
 
 
 let indexView =
-    html
-        []
-        [ head [] [ title [] [ str "Giraffe Example" ] ]
-          body
-              []
-              [ h1 [] [ str "I |> F#" ]
-                p [ _class "some-css-class"; _id "someId" ] [ str "Hello World from the Giraffe View Engine" ] ] ]
+    [
+        h1 [] [ str "I |> F#" ]
+        p [ _class "some-css-class"; _id "someId" ] [
+            str "Hello World from the Giraffe View Engine"
+        ]
+    ]
+    |> Shared.masterPage "Giraffe View Engine Example"
+
 
 let sayHelloNameHandler (name: string) : HttpHandler =
     fun (_: HttpFunc) (ctx: HttpContext) ->
@@ -33,17 +34,24 @@ let apiRoutes =
             routef "/%s" sayHelloNameHandler ] ]
 
 let endpoints =
-    [ GET [ route "/" (htmlView indexView) ]
+    [ GET [ route "/" (htmlView (Todos.Views.todoView Todos.Data.todoList)) ]
       subRoute "/api" apiRoutes
       subRoute "api/todo" Todos.TodoApiRoutes.Routes ]
 
 let notFoundHandler = "Not Found" |> text |> RequestErrors.notFound
 
 let configureApp (appBuilder: IApplicationBuilder) =
-    appBuilder.UseRouting().UseGiraffe(endpoints).UseGiraffe(notFoundHandler)
+    appBuilder
+        .UseRouting()
+        .UseStaticFiles()
+        .UseGiraffe(endpoints)
+        .UseGiraffe(notFoundHandler)
 
 let configureServices (services: IServiceCollection) =
-    services.AddRouting().AddGiraffe().AddSingleton<TodoStore>(TodoStore())
+    services
+        .AddRouting()
+        .AddGiraffe()
+        .AddSingleton<TodoStore>(TodoStore())
     |> ignore
 
 
